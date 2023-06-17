@@ -1,6 +1,6 @@
-package com.bagal.pojo.response.booking.entities;
+package com.bagal.api.booking.response.booking.entities;
 
-import com.bagal.pojo.request.entities.Bookingdates;
+import com.bagal.api.booking.request.entities.Bookingdates;
 import lombok.Builder;
 import lombok.Data;
 

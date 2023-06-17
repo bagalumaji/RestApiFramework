@@ -1,31 +1,31 @@
-package com.bagal.api;
+package com.bagal.api.authtoken;
 
 import com.bagal.configs.FrameworkConfig;
 import com.bagal.enums.ApiBaseConfigTypes;
-import com.bagal.pojo.request.BookingReuest;
 import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
 
-public final class BookingApi {
-    private BookingApi(){}
 
-    public static Response getNewBooking(BookingReuest requestBooking){
-        return given()
+public class AuthApi {
+    public static String getToken(){
+        AuthBody authBody =AuthBody.getAuthBody();
+        String token =  given()
                 .baseUri(FrameworkConfig.getValue(ApiBaseConfigTypes.BASE_URI.getValue()))
                 .accept("application/json")
                 .contentType(ContentType.JSON)
-                .body(requestBooking)
-                .log()
-                .all()
+                .body(authBody)
                 .when()
-                .post(FrameworkConfig.getValue(ApiBaseConfigTypes.BASE_PATH.getValue()))
+                .post(FrameworkConfig.getValue(ApiBaseConfigTypes.AUTH_PATH.getValue()))
                 .then()
                 .log()
                 .all()
                 .extract()
-                .response();
+                .response()
+                .jsonPath()
+                .getString("token");
+        System.out.println("token = " + token);
 
+        return token;
     }
 }

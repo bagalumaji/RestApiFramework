@@ -1,4 +1,4 @@
-package com.bagal.pojo.request.entities;
+package com.bagal.api.booking.request.entities;
 
 import lombok.Builder;
 import lombok.Data;

@@ -1,6 +1,6 @@
-package com.bagal.pojo.request;
+package com.bagal.api.booking.request;
 
-import com.bagal.pojo.request.entities.Bookingdates;
+import com.bagal.api.booking.request.entities.Bookingdates;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
@@ -10,15 +10,15 @@ import lombok.experimental.Accessors;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Builder(setterPrefix = "set")
 @Accessors(chain = true)
-public class BookingReuest {
+public class BookingBoody {
     private String firstname;
     private String lastname;
     private int totalprice;
     private boolean depositpaid;
     private Bookingdates bookingdates;
     private String additionalneeds;
-    public static BookingReuest getBookingReuestBody() {
-        return BookingReuest
+    public static BookingBoody getBookingReuestBody() {
+        return BookingBoody
                 .builder()
                 .setFirstname("John")
                 .setLastname("brown")
